@@ -1,0 +1,17 @@
+<div class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="container d-flex justify-content-between">
+    <a href="#" class="navbar-brand d-flex align-items-center">
+      <strong class="mr-2">MY TO-DO</strong>
+    </a>
+  </div>
+</div>
+
+<section class="todoapp">
+  <app-header (add)="onAddTodo($event)"></app-header>
+  <app-todo-list
+    [todos]="todos"
+    (toggleComplete)="onToggleTodoComplete($event)"
+    (remove)="onRemoveTodo($event)"
+  ></app-todo-list>
+</section>
+<app-footer></app-footer>
