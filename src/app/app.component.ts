@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { Todo } from "./models/todo";
-import { TodoService } from "./services/todo.service";
-import { AppInsightsService } from "@markpieszak/ng-application-insights";
+import { Component, OnInit } from '@angular/core';
+import { Todo } from './models/todo';
+import { TodoService } from './services/todo.service';
+import { AppInsightsService } from '@markpieszak/ng-application-insights';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
+  selector: 'app-root',
+  templateUrl: './app.component.html',
   providers: [TodoService, AppInsightsService]
 })
 export class AppComponent implements OnInit {
@@ -13,13 +13,13 @@ export class AppComponent implements OnInit {
     private todoService: TodoService,
     private appInsightsService: AppInsightsService
   ) {
-    this.appInsightsService.trackPageView("TodoMain");
+    this.appInsightsService.trackPageView('TodoMain');
   }
 
   todos: Todo[] = [];
 
   public ngOnInit() {
-    this.appInsightsService.trackPageView("TodoMain");
+    this.appInsightsService.trackPageView('TodoMain');
     this.todoService.getAllTodos().subscribe(todos => {
       this.todos = todos;
     });

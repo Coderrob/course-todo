@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "<your api url>",
+  apiUrl: '<your api url>',
   appInsightsConfig: {
-    instrumentationKey: "<your instrumentation key>"
+    instrumentationKey: '<your instrumentation key>'
   }
 };
