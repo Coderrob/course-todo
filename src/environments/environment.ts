@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "<your api url>",
+  apiUrl: 'http://localhost:7071/api',
   appInsightsConfig: {
-    instrumentationKey: "<your instrumentation key>"
+    instrumentationKey: '<your instrumentation key>'
   }
 };

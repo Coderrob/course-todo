@@ -1,23 +1,24 @@
-import { Injectable } from "@angular/core";
-import { environment } from "../../environments/environment";
-import { Http, Response } from "@angular/http";
-import { Todo } from "../models/todo";
-import { Observable } from "rxjs";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/catch";
-import "rxjs/add/observable/throw";
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Todo } from '../models/todo';
+import { Observable, throwError } from 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import * as _ from 'lodash';
 
 const API_URL = environment.apiUrl;
 
 @Injectable()
 export class ApiService {
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   public getAllTodos(): Observable<Todo[]> {
     return this.http
-      .get(API_URL + "/todo")
+      .get(API_URL + '/todo')
       .map(response => {
-        const todos = response.json();
+        const todos = _.values(response);
         return todos.map(todo => new Todo(todo));
       })
       .catch(this.handleError);
@@ -25,26 +26,26 @@ export class ApiService {
 
   public createTodo(todo: Todo): Observable<Todo> {
     return this.http
-      .post(API_URL + "/todo", todo)
+      .post(API_URL + '/todo', todo)
       .map(response => {
-        return new Todo(response.json());
+        return new Todo(response);
       })
       .catch(this.handleError);
   }
 
   public getTodoById(todoId: number): Observable<Todo> {
     return this.http
-      .get(API_URL + "/todo/" + todoId)
+      .get(API_URL + '/todo/' + todoId)
       .map(response => {
-        return new Todo(response.json());
+        return new Todo(response);
       })
       .catch(this.handleError);
   }
 
   public updateTodo(todo: Todo): Observable<Todo> {
     return this.http
-      .put(API_URL + "/todo/" + todo.id, todo)
-      .map(response => {
+      .put(API_URL + '/todo/' + todo.id, todo)
+      .map(() => {
         return todo;
       })
       .catch(this.handleError);
@@ -52,13 +53,13 @@ export class ApiService {
 
   public deleteTodoById(todoId: number): Observable<null> {
     return this.http
-      .delete(API_URL + "/todo/" + todoId)
-      .map(response => null)
+      .delete(API_URL + '/todo/' + todoId)
+      .map(() => null)
       .catch(this.handleError);
   }
 
   private handleError(error: Response | any) {
-    console.error("ApiService::handleError", error);
-    return Observable.throw(error);
+    console.error('ApiService::handleError', error);
+    return throwError(error);
   }
 }

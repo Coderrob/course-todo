@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Todo } from "../../models/todo";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Todo } from '../../models/todo';
 
 @Component({
-  selector: "app-todo-list",
-  templateUrl: "./todo-list.component.html"
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html'
 })
 export class TodoListComponent {
   @Input()
