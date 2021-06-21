@@ -1,5 +1,5 @@
-import { Injectable, ErrorHandler, Injector } from '@angular/core';
-import { AppInsightsService } from '@markpieszak/ng-application-insights';
+import { Injectable, ErrorHandler, Injector } from "@angular/core";
+import { AppInsightsService } from "@markpieszak/ng-application-insights";
 
 @Injectable()
 export class MonitoringErrorHandler extends ErrorHandler {
