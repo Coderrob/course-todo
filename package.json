@@ -24,7 +24,7 @@
     "applicationinsights-js": "^1.0.20",
     "core-js": "^3.4.5",
     "documentdb": "^1.15.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "rxjs": "^6.5.3",
     "rxjs-compat": "^6.5.3",
     "uuid": "^3.3.3",
